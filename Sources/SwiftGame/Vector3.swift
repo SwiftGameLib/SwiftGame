@@ -95,3 +95,114 @@ public struct Vector3: Equatable, Codable, CustomDebugStringConvertible {
         self.z = z
     }
 }
+
+// MARK: - Operators
+
+public extension Vector3 {
+
+    /// Inverts the values in the `Vector3`.
+    ///
+    /// - Parameters:
+    ///   - vector: Source `Vector3` on the right of the negative sign.
+    ///
+    /// - Returns:Result of the inversion.
+
+    @inlinable
+    static prefix func - (vector: Vector3) -> Vector3 {
+        return Vector3(-vector.x, -vector.y, -vector.z)
+    }
+
+    /// Adds two vectors.
+    ///
+    /// - Parameters:
+    ///   - left: Source `Vector3` on the left of the plus sign.
+    ///   - right: Source `Vector3` on the right of the plus] sign.
+    ///
+    /// - Returns:Sum of the vectors.
+
+    @inlinable
+    static func + (left: Vector3, right: Vector3) -> Vector3 {
+        return Vector3(left.x + right.x, left.y + right.y, left.z + right.z)
+    }
+
+    /// Subtracts a `Vector3` from a `Vector3`.
+    ///
+    /// - Parameters:
+    ///   - left: Source `Vector3` on the left of the minus sign.
+    ///   - right: Source `Vector3` on the right of the minus sign.
+    ///
+    /// - Returns:Result of the vector subtraction.
+
+    @inlinable
+    static func - (left: Vector3, right: Vector3) -> Vector3 {
+        return Vector3(left.x - right.x, left.y - right.y, left.z - right.z)
+    }
+
+    /// Multiplies the components of two `Vector3`s by each other.
+    ///
+    /// - Parameters:
+    ///   - left: Source `Vector3` on the left of the multiplication sign.
+    ///   - right: Source `Vector3` on the right of the multiplication sign.
+    ///
+    /// - Returns:Result of the vector multiplication.
+
+    @inlinable
+    static func * (left: Vector3, right: Vector3) -> Vector3 {
+        return Vector3(left.x * right.x, left.y * right.y, left.z * right.z)
+    }
+
+    /// Multiplies the components of a`Vector3` by a scalar.
+    ///
+    /// - Parameters:
+    ///   - left: Source `Vector3` on the left of the multiplication sign.
+    ///   - right: Scalar value on the right of the multiplication sign.
+    ///
+    /// - Returns:Result of the vector multiplication by a scalar.
+
+    @inlinable
+    static func * (left: Vector3, right: Float) -> Vector3 {
+        return Vector3(left.x * right, left.y * right, left.z * right)
+    }
+
+    /// Multiplies the components of a`Vector3` by a scalar.
+    ///
+    /// - Parameters:
+    ///   - left: Scalar value on the left of the multiplication sign.
+    ///   - right: Source `Vector3` on the right of the multiplication sign.
+    ///
+    /// - Returns:Result of the vector multiplication by a scalar.
+
+    @inlinable
+    static func * (left: Float, right: Vector3) -> Vector3 {
+        return Vector3(left * right.x, left * right.y, left * right.z)
+    }
+
+    /// Divides the components of two `Vector3`s by each other.
+    ///
+    /// - Parameters:
+    ///   - left: Source `Vector3` on the left of the division sign.
+    ///   - right: Source `Vector3` on the right of the division sign.
+    ///
+    /// - Returns:Result of the vector division.
+
+    @inlinable
+    @inline(__always)
+    static func / (left: Vector3, right: Vector3) -> Vector3 {
+        return Vector3(left.x / right.x, left.y / right.y, left.z / right.z)
+    }
+
+    /// Divides the components of a`Vector3` by a scalar.
+    ///
+    /// - Parameters:
+    ///   - left: Source `Vector3` on the left of the division sign.
+    ///   - right: Scalar value on the right of the division sign.
+    ///
+    /// - Returns:Result of the vector division by a scalar.
+
+    @inlinable
+    @inline(__always)
+    static func / (left: Vector3, right: Float) -> Vector3 {
+        let factor = 1.0 / right
+        return Vector3(left.x * factor, left.y * factor, left.z * factor)
+    }
+}
