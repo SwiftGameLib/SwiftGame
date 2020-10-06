@@ -106,6 +106,42 @@ public struct Vector4: Equatable, Codable, CustomDebugStringConvertible {
     }
 }
 
+// MARK: - Public methods
+
+public extension Vector4 {
+
+    /// Creates a new `Vector4` that contains the cartesian coordinates of a vector specified in barycentric coordinates and relative to a 4d triangle.
+    /// - Parameters:
+    ///   - value1: The first vector of a 3d triangle.
+    ///   - value2: The second vector of a 3d triangle.
+    ///   - value3: The third vector of a 3d triangle.
+    ///   - amount1: Barycentric scalar **b2** which represents a weighting factor towards the second vector of the 3d triangle.
+    ///   - amount2: Barycentric scalar **b3** which represents a weighting factor towards the third vector of the 3d triangle.
+    /// - Returns: The cartesian translation of barycentric coordinates.
+    static func barycentric(_ value1: Vector4, _ value2: Vector4, _ value3: Vector4, amount1: Float, amount2: Float) -> Vector4 {
+        return Vector4(
+            MathHelper.barycentric(value1.x, value2.x, value3.x, amount1: amount1, amount2: amount2),
+            MathHelper.barycentric(value1.y, value2.y, value3.y, amount1: amount1, amount2: amount2),
+            MathHelper.barycentric(value1.z, value2.z, value3.z, amount1: amount1, amount2: amount2),
+            MathHelper.barycentric(value1.w, value2.w, value3.w, amount1: amount1, amount2: amount2))
+    }
+
+    /// Creates a new `Vector4` that contains the cartesian coordinates of a vector specified in barycentric coordinates and relative to a 3d triangle.
+    /// - Parameters:
+    ///   - value1: The first vector of a 3d triangle.
+    ///   - value2: The second vector of a 3d triangle.
+    ///   - value3: The third vector of a 3d triangle.
+    ///   - amount1: Barycentric scalar **b2** which represents a weighting factor towards the second vector of the 3d triangle.
+    ///   - amount2: Barycentric scalar **b3** which represents a weighting factor towards the third vector of the 3d triangle.
+    ///   - result: The cartesian translation of barycentric coordinates as an `inout` parameter.
+    static func barycentric(_ value1: Vector4, _ value2: Vector4, _ value3: Vector4, amount1: Float, amount2: Float, result: inout Vector4) {
+        result.x = MathHelper.barycentric(value1.x, value2.x, value3.x, amount1: amount1, amount2: amount2)
+        result.y = MathHelper.barycentric(value1.y, value2.y, value3.y, amount1: amount1, amount2: amount2)
+        result.z = MathHelper.barycentric(value1.z, value2.z, value3.z, amount1: amount1, amount2: amount2)
+        result.w = MathHelper.barycentric(value1.w, value2.w, value3.w, amount1: amount1, amount2: amount2)
+    }
+}
+
 // MARK: - Operators
 
 public extension Vector4 {

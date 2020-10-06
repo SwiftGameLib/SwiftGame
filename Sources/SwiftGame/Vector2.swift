@@ -60,6 +60,38 @@ public struct Vector2: Equatable, Codable, CustomDebugStringConvertible {
     }
 }
 
+// MARK: - Public methods
+
+public extension Vector2 {
+
+    /// Creates a new `Vector2` that contains the cartesian coordinates of a vector specified in barycentric coordinates and relative to a 2d triangle.
+    /// - Parameters:
+    ///   - value1: The first vector of a 2d triangle.
+    ///   - value2: The second vector of a 2d triangle.
+    ///   - value3: The third vector of a 2d triangle.
+    ///   - amount1: Barycentric scalar **b2** which represents a weighting factor towards the second vector of the 2d triangle.
+    ///   - amount2: Barycentric scalar **b3** which represents a weighting factor towards the third vector of the 2d triangle.
+    /// - Returns: The cartesian translation of barycentric coordinates.
+    static func barycentric(_ value1: Vector2, _ value2: Vector2, _ value3: Vector2, amount1: Float, amount2: Float) -> Vector2 {
+        return Vector2(
+            MathHelper.barycentric(value1.x, value2.x, value3.x, amount1: amount1, amount2: amount2),
+            MathHelper.barycentric(value1.y, value2.y, value3.y, amount1: amount1, amount2: amount2))
+    }
+
+    /// Creates a new `Vector2` that contains the cartesian coordinates of a vector specified in barycentric coordinates and relative to a 2d triangle.
+    /// - Parameters:
+    ///   - value1: The first vector of a 2d triangle.
+    ///   - value2: The second vector of a 2d triangle.
+    ///   - value3: The third vector of a 2d triangle.
+    ///   - amount1: Barycentric scalar **b2** which represents a weighting factor towards the second vector of the 2d triangle.
+    ///   - amount2: Barycentric scalar **b3** which represents a weighting factor towards the third vector of the 2d triangle.
+    ///   - result: The cartesian translation of barycentric coordinates as an `inout` parameter.
+    static func barycentric(_ value1: Vector2, _ value2: Vector2, _ value3: Vector2, amount1: Float, amount2: Float, result: inout Vector2) {
+        result.x = MathHelper.barycentric(value1.x, value2.x, value3.x, amount1: amount1, amount2: amount2)
+        result.y = MathHelper.barycentric(value1.y, value2.y, value3.y, amount1: amount1, amount2: amount2)
+    }
+}
+
 // MARK: - Operators
 
 public extension Vector2 {
