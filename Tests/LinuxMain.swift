@@ -3,5 +3,5 @@ import XCTest
 import SwiftGameTests
 
 var tests = [XCTestCaseEntry]()
-tests += SwiftGameTests.allTests()
+tests += MathHelperTests.allTests()
 XCTMain(tests)

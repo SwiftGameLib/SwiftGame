@@ -22,16 +22,16 @@ public final class MathHelper {
     public static let log2E: Float = 1.442695
 
     /// Represents the value of pi (`3.14159274`).
-    public static let pi: Float = Float.pi
+    public static let pi: Float = Float(Float64.pi)
 
     /// Represents the value of pi divided by two (`1.57079637`).
-    public static let piOver2: Float = Float.pi / 2.0
+    public static let piOver2: Float = Float(Float64.pi) / 2.0
 
     /// Represents the value of pi divided by 4 (`0.7853982`).
-    public static let piOver4: Float = Float.pi / 4.0
+    public static let piOver4: Float = Float(Float64.pi) / 4.0
 
     /// Represents the value of pi times two (`6.28318548`).
-    public static let twoPi: Float = Float.pi * 2.0
+    public static let twoPi: Float = Float(Float64.pi) * 2.0
 
     /// Represents the value of pi times two (`6.28318548`).
     /// This is an alias of twoPi.
@@ -275,7 +275,7 @@ public extension FixedWidthInteger {
      Determines if the value is a power of two.
      - Returns: `true` if the number is a power of two; otherwise `false`.
      */
-    func isPowerOfTwo() -> Bool {
+    var isPowerOfTwo: Bool {
         return (self > 0) && ((self & (self - 1)) == 0)
     }
 }
