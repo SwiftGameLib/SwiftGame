@@ -90,6 +90,33 @@ public extension Vector2 {
         result.x = MathHelper.barycentric(value1.x, value2.x, value3.x, amount1: amount1, amount2: amount2)
         result.y = MathHelper.barycentric(value1.y, value2.y, value3.y, amount1: amount1, amount2: amount2)
     }
+
+    /// Creates a new `Vector2` that contains the Catmull Rom interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector in the interpolation.
+    ///   - value2: The second vector in the interpolation.
+    ///   - value3: The third vector in the interpolation.
+    ///   - value4: The fourth vector in the interpolation.
+    ///   - amount: Weighting factor.
+    /// - Returns: The result of the interpolation.
+    static func catmullRom(_ value1: Vector2, _ value2: Vector2, _ value3: Vector2, _ value4: Vector2, amount: Float) -> Vector2 {
+        return Vector2(
+            MathHelper.catmullRom(value1.x, value2.x, value3.x, value4.x, amount: amount),
+            MathHelper.catmullRom(value1.y, value2.y, value3.y, value4.y, amount: amount))
+    }
+
+    /// Creates a new `Vector2` that contains the Catmull Rom interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector in the interpolation.
+    ///   - value2: The second vector in the interpolation.
+    ///   - value3: The third vector in the interpolation.
+    ///   - value4: The fourth vector in the interpolation.
+    ///   - amount: Weighting factor.
+    ///   - result: The result of the interpolation as an `inout` parameter..
+    static func catmullRom(_ value1: Vector2, _ value2: Vector2, _ value3: Vector2, _ value4: Vector2, amount: Float, result: inout Vector2) {
+        result.x = MathHelper.catmullRom(value1.x, value2.x, value3.x, value4.x, amount: amount)
+        result.y = MathHelper.catmullRom(value1.y, value2.y, value3.y, value4.y, amount: amount)
+    }
 }
 
 // MARK: - Operators

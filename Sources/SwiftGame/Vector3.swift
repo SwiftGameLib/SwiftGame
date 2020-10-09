@@ -128,6 +128,35 @@ public extension Vector3 {
         result.y = MathHelper.barycentric(value1.y, value2.y, value3.y, amount1: amount1, amount2: amount2)
         result.z = MathHelper.barycentric(value1.z, value2.z, value3.z, amount1: amount1, amount2: amount2)
     }
+
+    /// Creates a new `Vector3` that contains the Catmull Rom interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector in the interpolation.
+    ///   - value2: The second vector in the interpolation.
+    ///   - value3: The third vector in the interpolation.
+    ///   - value4: The fourth vector in the interpolation.
+    ///   - amount: Weighting factor.
+    /// - Returns: The result of the interpolation.
+    static func catmullRom(_ value1: Vector3, _ value2: Vector3, _ value3: Vector3, _ value4: Vector3, amount: Float) -> Vector3 {
+        return Vector3(
+            MathHelper.catmullRom(value1.x, value2.x, value3.x, value4.x, amount: amount),
+            MathHelper.catmullRom(value1.y, value2.y, value3.y, value4.y, amount: amount),
+            MathHelper.catmullRom(value1.z, value2.z, value3.z, value4.z, amount: amount))
+    }
+
+    /// Creates a new `Vector3` that contains the Catmull Rom interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector in the interpolation.
+    ///   - value2: The second vector in the interpolation.
+    ///   - value3: The third vector in the interpolation.
+    ///   - value4: The fourth vector in the interpolation.
+    ///   - amount: Weighting factor.
+    ///   - result: The result of the interpolation as an `inout` parameter..
+    static func catmullRom(_ value1: Vector3, _ value2: Vector3, _ value3: Vector3, _ value4: Vector3, amount: Float, result: inout Vector3) {
+        result.x = MathHelper.catmullRom(value1.x, value2.x, value3.x, value4.x, amount: amount)
+        result.y = MathHelper.catmullRom(value1.y, value2.y, value3.y, value4.y, amount: amount)
+        result.z = MathHelper.catmullRom(value1.z, value2.z, value3.z, value4.z, amount: amount)
+    }
 }
 
 // MARK: - Operators
