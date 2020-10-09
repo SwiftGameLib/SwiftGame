@@ -73,7 +73,7 @@ public struct Vector4: Equatable, Codable, CustomDebugStringConvertible {
     ///   - z: The z coordinate in 4d space.
     ///   - w: The w coordinate in 4d space.
 
-    public init(_ value: Vector2, z: Float, w: Float) {
+    public init(_ value: Vector2, _ z: Float, _ w: Float) {
         x = value.x
         y = value.y
         self.z = z
@@ -86,7 +86,7 @@ public struct Vector4: Equatable, Codable, CustomDebugStringConvertible {
     ///   - value: The x, y and z coordinates in 4d space.
     ///   - w: The w coordinate in 4d space.
 
-    public init(_ value: Vector3, w: Float) {
+    public init(_ value: Vector3, _ w: Float) {
         x = value.x
         y = value.y
         z = value.z
