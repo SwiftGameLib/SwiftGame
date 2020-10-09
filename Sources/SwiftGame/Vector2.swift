@@ -142,6 +142,43 @@ public extension Vector2 {
         x = MathHelper.clamp(x, min: min.x, max: max.x)
         y = MathHelper.clamp(y, min: min.y, max: max.y)
     }
+
+    /// Returns the distance between two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    /// - Returns: The distance between two vectors
+    static func distance(_ value1: Vector2, _ value2: Vector2) -> Float {
+        return distanceSquared(value1, value2).squareRoot()
+    }
+
+    /// Returns the distance between two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - result: The distance between two vectors as an `inout` parameter.
+    static func distance(_ value1: Vector2, _ value2: Vector2, result: inout Float) {
+        result = distance(value1, value2)
+    }
+
+    /// Returns the squared distance between two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    /// - Returns: The squared distance between two vectors.
+    static func distanceSquared(_ value1: Vector2, _ value2: Vector2) -> Float {
+        let v1 = value1.x - value2.x, v2 = value1.y - value2.y
+        return (v1 * v1) + (v2 * v2)
+    }
+
+    /// Returns the squared distance between two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - result: The squared distance between two vectors as an `inout` parameter.
+    static func distanceSquared(_ value1: Vector2, _ value2: Vector2, result: inout Float) {
+        result = distanceSquared(value1, value2)
+    }
 }
 
 // MARK: - Operators
