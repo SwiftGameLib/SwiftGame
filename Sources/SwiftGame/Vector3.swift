@@ -163,6 +163,27 @@ public extension Vector3 {
     var ceiling: Vector3 {
         return Vector3(ceil(x), ceil(y), ceil(z))
     }
+
+    /// Clamp the components of the vector within a specified range.
+    /// - Parameters:
+    ///   - min: The minimum component values.
+    ///   - max: The maximum component values.
+    /// - Returns: The clamped vector.
+    func clamped(between min: Vector3, and max: Vector3) -> Vector3 {
+        return Vector3(MathHelper.clamp(x, min: min.x, max: max.x),
+                       MathHelper.clamp(y, min: min.y, max: max.y),
+                       MathHelper.clamp(z, min: min.z, max: max.z))
+    }
+
+    /// Clamp the components of the vector within a specified range.
+    /// - Parameters:
+    ///   - min: The minimum component values.
+    ///   - max: The maximum component values.
+    mutating func clamp(between min: Vector3, and max: Vector3) {
+        x = MathHelper.clamp(x, min: min.x, max: max.x)
+        y = MathHelper.clamp(y, min: min.y, max: max.y)
+        z = MathHelper.clamp(z, min: min.z, max: max.z)
+    }
 }
 
 // MARK: - Operators

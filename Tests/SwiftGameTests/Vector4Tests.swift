@@ -82,11 +82,17 @@ final class Vector4Tests: XCTestCase {
         XCTAssertEqual(Vector4.unitW, Vector4(0, 0, 0, 1))
     }
 
+    func testClamping() {
+        let testVector = Vector4(5, 7, 9, 11)
+        XCTAssertEqual(testVector.clamped(between: Vector4(6, 8, 8, 8), and: Vector4(8, 10, 8.5, 10)), Vector4(6, 8, 8.5, 10))
+    }
+
     static var allTests = [
         ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),
         ("testCeil", testCeil),
         ("testDebugStrings", testDebugStrings),
         ("testConstants", testConstants),
+        ("testClamping", testClamping),
     ]
 }
