@@ -177,6 +177,29 @@ public extension Vector4 {
     var ceiling: Vector4 {
         return Vector4(ceil(x), ceil(y), ceil(z), ceil(w))
     }
+
+    /// Clamp the components of the vector within a specified range.
+    /// - Parameters:
+    ///   - min: The minimum component values.
+    ///   - max: The maximum component values.
+    /// - Returns: The clamped vector.
+    func clamped(between min: Vector4, and max: Vector4) -> Vector4 {
+        return Vector4(MathHelper.clamp(x, min: min.x, max: max.x),
+                       MathHelper.clamp(y, min: min.y, max: max.y),
+                       MathHelper.clamp(z, min: min.z, max: max.z),
+                       MathHelper.clamp(w, min: min.w, max: max.w))
+    }
+
+    /// Clamp the components of the vector within a specified range.
+    /// - Parameters:
+    ///   - min: The minimum component values.
+    ///   - max: The maximum component values.
+    mutating func clamp(between min: Vector4, and max: Vector4) {
+        x = MathHelper.clamp(x, min: min.x, max: max.x)
+        y = MathHelper.clamp(y, min: min.y, max: max.y)
+        z = MathHelper.clamp(z, min: min.z, max: max.z)
+        w = MathHelper.clamp(w, min: min.w, max: max.w)
+    }
 }
 
 // MARK: - Operators
