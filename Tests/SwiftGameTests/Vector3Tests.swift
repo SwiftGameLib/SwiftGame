@@ -91,6 +91,10 @@ final class Vector3Tests: XCTestCase {
         XCTAssertEqual(testVector.clamped(between: Vector3(6, 8, 8), and: Vector3(8, 10, 8.5)), Vector3(6, 8, 8.5))
     }
 
+    func testCrossProduct() {
+        XCTAssertEqual(Vector3.cross(Vector3.forward, Vector3.left), Vector3.up)
+    }
+
     static var allTests = [
         ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),
@@ -98,5 +102,6 @@ final class Vector3Tests: XCTestCase {
         ("testDebugStrings", testDebugStrings),
         ("testConstants", testConstants),
         ("testClamping", testClamping),
+        ("testCrossProduct", testCrossProduct),
     ]
 }
