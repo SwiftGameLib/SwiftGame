@@ -112,7 +112,7 @@ public extension Vector2 {
     ///   - value3: The third vector in the interpolation.
     ///   - value4: The fourth vector in the interpolation.
     ///   - amount: Weighting factor.
-    ///   - result: The result of the interpolation as an `inout` parameter..
+    ///   - result: The result of the interpolation as an `inout` parameter.
     static func catmullRom(_ value1: Vector2, _ value2: Vector2, _ value3: Vector2, _ value4: Vector2, amount: Float, result: inout Vector2) {
         result.x = MathHelper.catmullRom(value1.x, value2.x, value3.x, value4.x, amount: amount)
         result.y = MathHelper.catmullRom(value1.y, value2.y, value3.y, value4.y, amount: amount)
