@@ -17,3 +17,19 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
+
+- name: Swift Doc
+  # You may pin to the exact commit or the version.
+  # uses: SwiftDocOrg/swift-doc@f441648bcb8a6b07a3724bc1af2488e8a6e6c184
+  uses: SwiftDocOrg/swift-doc@1.0.0-beta.5
+  with:
+    # A path to a directory containing Swift (`.swift`) files in your workspace
+    inputs: # default is ./Sources
+    # The name of the module
+    module-name: SwiftGame
+    # The output format (commonmark or html)
+    format: # optional, default is commonmark
+    # The base URL for all relative URLs generated in documents
+    base-url: # optional, default is ./
+    # The path for generated output
+    output: # default is ./.build/documentation
