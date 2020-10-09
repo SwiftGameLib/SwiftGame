@@ -48,7 +48,7 @@ final class Vector4Tests: XCTestCase {
         XCTAssertEqual(vector.ceiling, Vector4(2.0))
 
         // Test .0 non-rounding
-        vector = Vector4(2.1)
+        vector = Vector4(2.0)
         XCTAssertEqual(vector.ceiling, Vector4(2.0))
 
         // Test negative rounding
