@@ -67,9 +67,16 @@ final class Vector4Tests: XCTestCase {
         XCTAssertEqual(vector.ceiling, Vector4(-3.0))
     }
 
+    func testDebugStrings() {
+        let vector = Vector4(2.2)
+
+        XCTAssertEqual(vector.debugDescription, "2.2 2.2 2.2 2.2")
+    }
+
     static var allTests = [
         ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),
         ("testCeil", testCeil),
+        ("testDebugStrings", testDebugStrings),
     ]
 }
