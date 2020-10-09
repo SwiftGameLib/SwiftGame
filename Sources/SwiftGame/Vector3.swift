@@ -157,6 +157,12 @@ public extension Vector3 {
         result.y = MathHelper.catmullRom(value1.y, value2.y, value3.y, value4.y, amount: amount)
         result.z = MathHelper.catmullRom(value1.z, value2.z, value3.z, value4.z, amount: amount)
     }
+
+    /// Round the members of this `Vector3` towards positive infinity.
+    /// - Returns: The rounded vector
+    var ceiling: Vector3 {
+        return Vector3(ceil(x), ceil(y), ceil(z))
+    }
 }
 
 // MARK: - Operators
