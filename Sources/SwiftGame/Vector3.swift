@@ -184,6 +184,33 @@ public extension Vector3 {
         y = MathHelper.clamp(y, min: min.y, max: max.y)
         z = MathHelper.clamp(z, min: min.z, max: max.z)
     }
+
+    /// Computes the cross product of two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    /// - Returns: The cross product of the two vectors.
+    static func cross(_ value1: Vector3, _ value2: Vector3) -> Vector3 {
+        return Vector3(value1.y * value2.z - value2.y * value1.z,
+                       -(value1.x * value2.z - value2.x * value1.z),
+                       value1.x * value2.y - value2.x * value1.y)
+    }
+
+    /// Computes the cross product of two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - result: The cross product of the two vectors as an `inout` parameter.
+    static func cross(_ value1: Vector3, _ value2: Vector3, result: inout Vector3) {
+        result = cross(value1, value2)
+    }
+
+    /// Computes the cross product of this and an other vector.
+    /// - Parameter other: The second vector.
+    /// - Returns: The cross product of the two vectors.
+    func cross(_ other: Vector3) -> Vector3 {
+        return Vector3.cross(self, other)
+    }
 }
 
 // MARK: - Operators
