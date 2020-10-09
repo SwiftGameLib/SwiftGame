@@ -73,10 +73,20 @@ final class Vector4Tests: XCTestCase {
         XCTAssertEqual(vector.debugDescription, "2.2 2.2 2.2 2.2")
     }
 
+    func testConstants() {
+        XCTAssertEqual(Vector4.zero, Vector4(0, 0, 0, 0))
+        XCTAssertEqual(Vector4.one, Vector4(1, 1, 1, 1))
+        XCTAssertEqual(Vector4.unitX, Vector4(1, 0, 0, 0))
+        XCTAssertEqual(Vector4.unitY, Vector4(0, 1, 0, 0))
+        XCTAssertEqual(Vector4.unitZ, Vector4(0, 0, 1, 0))
+        XCTAssertEqual(Vector4.unitW, Vector4(0, 0, 0, 1))
+    }
+
     static var allTests = [
         ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),
         ("testCeil", testCeil),
         ("testDebugStrings", testDebugStrings),
+        ("testConstants", testConstants),
     ]
 }
