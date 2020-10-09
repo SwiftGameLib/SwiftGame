@@ -87,7 +87,15 @@ final class Vector4Tests: XCTestCase {
         XCTAssertEqual(testVector.clamped(between: Vector4(6, 8, 8, 8), and: Vector4(8, 10, 8.5, 10)), Vector4(6, 8, 8.5, 10))
     }
 
+    func testDistanceSquared() {
+        let v1 = Vector4(0.1, 100.0, -5.5, 5.0)
+        let v2 = Vector4(1.1, -2.0, 5.5, 0.0)
+        let d = Vector4.distanceSquared(v1, v2)
+        XCTAssertEqual(d, 10551)
+    }
+
     static var allTests = [
+        ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),
         ("testCeil", testCeil),
