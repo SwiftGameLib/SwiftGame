@@ -140,6 +140,37 @@ public extension Vector4 {
         result.z = MathHelper.barycentric(value1.z, value2.z, value3.z, amount1: amount1, amount2: amount2)
         result.w = MathHelper.barycentric(value1.w, value2.w, value3.w, amount1: amount1, amount2: amount2)
     }
+
+    /// Creates a new `Vector4` that contains the Catmull Rom interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector in the interpolation.
+    ///   - value2: The second vector in the interpolation.
+    ///   - value3: The third vector in the interpolation.
+    ///   - value4: The fourth vector in the interpolation.
+    ///   - amount: Weighting factor.
+    /// - Returns: The result of the interpolation.
+    static func catmullRom(_ value1: Vector4, _ value2: Vector4, _ value3: Vector4, _ value4: Vector4, amount: Float) -> Vector4 {
+        return Vector4(
+            MathHelper.catmullRom(value1.x, value2.x, value3.x, value4.x, amount: amount),
+            MathHelper.catmullRom(value1.y, value2.y, value3.y, value4.y, amount: amount),
+            MathHelper.catmullRom(value1.z, value2.z, value3.z, value4.z, amount: amount),
+            MathHelper.catmullRom(value1.w, value2.w, value3.w, value4.w, amount: amount))
+    }
+
+    /// Creates a new `Vector4` that contains the Catmull Rom interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector in the interpolation.
+    ///   - value2: The second vector in the interpolation.
+    ///   - value3: The third vector in the interpolation.
+    ///   - value4: The fourth vector in the interpolation.
+    ///   - amount: Weighting factor.
+    ///   - result: The result of the interpolation as an `inout` parameter..
+    static func catmullRom(_ value1: Vector4, _ value2: Vector4, _ value3: Vector4, _ value4: Vector4, amount: Float, result: inout Vector4) {
+        result.x = MathHelper.catmullRom(value1.x, value2.x, value3.x, value4.x, amount: amount)
+        result.y = MathHelper.catmullRom(value1.y, value2.y, value3.y, value4.y, amount: amount)
+        result.z = MathHelper.catmullRom(value1.z, value2.z, value3.z, value4.z, amount: amount)
+        result.w = MathHelper.catmullRom(value1.w, value2.w, value3.w, value4.w, amount: amount)
+    }
 }
 
 // MARK: - Operators
