@@ -9,6 +9,16 @@ import XCTest
 @testable import SwiftGame
 
 final class Vector3Tests: XCTestCase {
+
+    func testInitializers () {
+        let expectedResult = Vector3(1, 2, 3)
+        let expectedResult2 = Vector3(2.2, 2.2, 2.2)
+
+        XCTAssertEqual(expectedResult, Vector3(1, 2, 3))
+        XCTAssertEqual(expectedResult, Vector3(Vector2(1, 2), 3))
+        XCTAssertEqual(expectedResult2, Vector3(2.2))
+    }
+
     func testMultiplication() {
         let vector = Vector3(1, 2, 3)
 
@@ -57,6 +67,7 @@ final class Vector3Tests: XCTestCase {
     }
 
     static var allTests = [
+        ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),
         ("testCeil", testCeil),
     ]

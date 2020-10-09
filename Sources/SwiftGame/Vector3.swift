@@ -89,7 +89,7 @@ public struct Vector3: Equatable, Codable, CustomDebugStringConvertible {
     ///   - value: The x and y coordinates in 3d space.
     ///   - z: The z coordinate in 3d space.
 
-    public init(_ value: Vector2, z: Float) {
+    public init(_ value: Vector2, _ z: Float) {
         x = value.x
         y = value.y
         self.z = z
