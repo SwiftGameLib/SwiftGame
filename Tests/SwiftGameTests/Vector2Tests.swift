@@ -42,7 +42,22 @@ final class Vector2Tests: XCTestCase {
         XCTAssertEqual(vector * vector2, vector2 * vector)
     }
 
+    func testCeil() {
+        // Test positive rounding
+        var vector = Vector2(1.999)
+        XCTAssertEqual(vector.ceiling, Vector2(2.0))
+
+        // Test .0 non-rounding
+        vector = Vector2(2.0)
+        XCTAssertEqual(vector.ceiling, Vector2(2.0))
+
+        // Test negative rounding
+        vector = Vector2(-3.499)
+        XCTAssertEqual(vector.ceiling, Vector2(-3.0))
+    }
+
     static var allTests = [
         ("testMultiplication", testMultiplication),
+        ("testCeil", testCeil),
     ]
 }
