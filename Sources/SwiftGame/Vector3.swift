@@ -33,7 +33,7 @@ public struct Vector3: Equatable, Codable, CustomDebugStringConvertible {
     public static let down: Vector3 = Vector3(0, -1, 0)
 
     /// Returns a `Vector3` with components `0, -1, 0`.
-    public static let right: Vector3 = Vector3(0, -1, 0)
+    public static let right: Vector3 = Vector3(1, 0, 0)
 
     /// Returns a `Vector3` with components `-1, 0, 0`.
     public static let left: Vector3 = Vector3(-1, 0, 0)
