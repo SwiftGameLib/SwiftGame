@@ -175,7 +175,7 @@ public extension Vector4 {
     /// Round the members of this `Vector4` towards positive infinity.
     /// - Returns: The rounded vector
     var ceiling: Vector4 {
-        return Vector4(ceil(x), ceil(y), ceil(z), ceil(w))
+        return Vector4(x.rounded(.up), y.rounded(.up), z.rounded(.up), w.rounded(.up))
     }
 
     /// Clamp the components of the vector within a specified range.
@@ -254,6 +254,11 @@ public extension Vector4 {
     ///   - result: The dot product of the two vectors as an `inout` parameter.
     static func dot(_ value1: Vector4, _ value2: Vector4, result: inout Float) {
         result = dot(value1, value2)
+    }
+    
+    /// Returns a new vector that contains the members of the original vector rounded towards negative infinity.
+    var floor: Vector4 {
+        return Vector4(x.rounded(.down), y.rounded(.down), z.rounded(.down), w.rounded(.down))
     }
 }
 

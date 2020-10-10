@@ -53,7 +53,8 @@ final class Vector4Tests: XCTestCase {
         XCTAssertEqual(vector * vector2, vector2 * vector)
     }
 
-    func testCeil() {
+    func testRounding() {
+        // MARK: Ceiling
         // Test positive rounding
         var vector = Vector4(1.999)
         XCTAssertEqual(vector.ceiling, Vector4(2.0))
@@ -65,6 +66,19 @@ final class Vector4Tests: XCTestCase {
         // Test negative rounding
         vector = Vector4(-3.499)
         XCTAssertEqual(vector.ceiling, Vector4(-3.0))
+        
+        // MARK: Floor
+        // Test positive rounding
+        vector = Vector4(1.999)
+        XCTAssertEqual(vector.floor, Vector4(1.0))
+
+        // Test .0 non-rounding
+        vector = Vector4(2.0)
+        XCTAssertEqual(vector.floor, Vector4(2.0))
+
+        // Test negative rounding
+        vector = Vector4(-3.499)
+        XCTAssertEqual(vector.floor, Vector4(-4.0))
     }
 
     func testDebugStrings() {
@@ -112,7 +126,7 @@ final class Vector4Tests: XCTestCase {
         ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),
-        ("testCeil", testCeil),
+        ("testRounding", testRounding),
         ("testDebugStrings", testDebugStrings),
         ("testConstants", testConstants),
         ("testClamping", testClamping),
