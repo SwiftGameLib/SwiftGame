@@ -93,8 +93,22 @@ final class Vector4Tests: XCTestCase {
         let d = Vector4.distanceSquared(v1, v2)
         XCTAssertEqual(d, 10551)
     }
+    
+    func testDot() {
+        let vector1 = Vector4(1, 2, 3, 4)
+        let vector2 = Vector4(0.5, 1.1, -3.8, 1.2)
+        
+        let expectedResult: Float = -3.89999962
+        
+        XCTAssertEqual(expectedResult, Vector4.dot(vector1, vector2))
+        
+        var result: Float = 0.0
+        Vector4.dot(vector1, vector2, result: &result)
+        XCTAssertEqual(expectedResult, result)
+    }
 
     static var allTests = [
+        ("testDot", testDot),
         ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),
