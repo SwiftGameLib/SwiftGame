@@ -121,7 +121,7 @@ public extension Vector2 {
     /// Round the members of this `Vector2` towards positive infinity.
     /// - Returns: The rounded vector
     var ceiling: Vector2 {
-        return Vector2(ceil(x), ceil(y))
+        return Vector2(x.rounded(.up), y.rounded(.up))
     }
 
     /// Clamp the components of the vector within a specified range.
@@ -196,6 +196,11 @@ public extension Vector2 {
     ///   - result: The dot product of the two vectors as an `inout` parameter.
     static func dot(_ value1: Vector2, _ value2: Vector2, result: inout Float) {
         result = dot(value1, value2)
+    }
+    
+    /// Returns a new vector that contains the members of the original vector rounded towards negative infinity.
+    var floor: Vector2 {
+        return Vector2(x.rounded(.down), y.rounded(.down))
     }
 }
 
