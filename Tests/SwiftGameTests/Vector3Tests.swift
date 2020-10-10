@@ -102,7 +102,21 @@ final class Vector3Tests: XCTestCase {
         XCTAssertEqual(d, 10526)
     }
 
+    func testDot() {
+        let vector1 = Vector3(1, 2, 3)
+        let vector2 = Vector3(0.5, 1.1, -3.8)
+        
+        let expectedResult: Float = -8.7
+        
+        XCTAssertEqual(expectedResult, Vector3.dot(vector1, vector2))
+        
+        var result: Float = 0.0
+        Vector3.dot(vector1, vector2, result: &result)
+        XCTAssertEqual(expectedResult, result)
+    }
+
     static var allTests = [
+        ("testDot", testDot),
         ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),
         ("testMultiplication", testMultiplication),

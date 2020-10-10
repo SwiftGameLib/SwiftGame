@@ -248,6 +248,24 @@ public extension Vector3 {
     static func distanceSquared(_ value1: Vector3, _ value2: Vector3, result: inout Float) {
         result = distanceSquared(value1, value2)
     }
+    
+    /// Returns the dot product of two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    /// - Returns: The dot product of the two vectors.
+    static func dot(_ value1: Vector3, _ value2: Vector3) -> Float {
+        return value1.x * value2.x + value1.y * value2.y + value1.z * value2.z
+    }
+    
+    /// Returns the dot product of two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - result: The dot product of the two vectors as an `inout` parameter.
+    static func dot(_ value1: Vector3, _ value2: Vector3, result: inout Float) {
+        result = dot(value1, value2)
+    }
 }
 
 // MARK: - Operators
