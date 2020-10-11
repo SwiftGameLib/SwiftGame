@@ -117,6 +117,34 @@ final class Vector2Tests: XCTestCase {
         XCTAssertEqual(expectedResult, result)
     }
     
+    func testHash() {
+        // Check for overflows
+        let max = Vector2(Float.greatestFiniteMagnitude, Float.greatestFiniteMagnitude)
+        let min = Vector2(Float.leastNormalMagnitude, Float.leastNormalMagnitude)
+        
+        XCTAssertNotEqual(max.hashValue, Vector2.zero.hashValue)
+        XCTAssertNotEqual(min.hashValue, Vector2.zero.hashValue)
+        
+        // Common values
+        let a = Vector2(0)
+        XCTAssertEqual(a.hashValue, Vector2.zero.hashValue)
+        XCTAssertNotEqual(a.hashValue, Vector2.one.hashValue)
+        
+        // Individual properties
+        let xa = Vector2(2, 1)
+        let xb = Vector2(3, 1)
+        let ya = Vector2(1, 2)
+        let yb = Vector2(1, 3)
+        XCTAssertNotEqual(xa.hashValue, xb.hashValue)
+        XCTAssertNotEqual(ya.hashValue, yb.hashValue)
+        
+        XCTAssertNotEqual(xa.hashValue, ya.hashValue)
+        XCTAssertNotEqual(xb.hashValue, yb.hashValue)
+        
+        XCTAssertNotEqual(xa.hashValue, yb.hashValue)
+        XCTAssertNotEqual(ya.hashValue, xb.hashValue)
+    }
+    
     func testHermite() {
         let t1 = Vector2(1.40625, 1.40625)
         let t2 = Vector2(2.662375, 2.26537514)
@@ -139,6 +167,7 @@ final class Vector2Tests: XCTestCase {
 
     static var allTests = [
         ("testHermite", testHermite),
+        ("testHash", testHash),
         ("testDot", testDot),
         ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),

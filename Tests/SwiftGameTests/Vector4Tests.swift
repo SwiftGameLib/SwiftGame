@@ -121,6 +121,49 @@ final class Vector4Tests: XCTestCase {
         XCTAssertEqual(expectedResult, result)
     }
 
+    func testHash() {
+        // Check for overflows
+        let max = Vector4(Float.greatestFiniteMagnitude, Float.greatestFiniteMagnitude,
+                          Float.greatestFiniteMagnitude, Float.greatestFiniteMagnitude)
+        let min = Vector4(Float.leastNormalMagnitude, Float.leastNormalMagnitude,
+                          Float.leastNormalMagnitude, Float.leastNormalMagnitude)
+        
+        XCTAssertNotEqual(max.hashValue, Vector4.zero.hashValue)
+        XCTAssertNotEqual(min.hashValue, Vector4.zero.hashValue)
+        
+        // Common values
+        let a = Vector4(0)
+        XCTAssertEqual(a.hashValue, Vector4.zero.hashValue)
+        XCTAssertNotEqual(a.hashValue, Vector4.one.hashValue)
+        
+        // Individual properties
+        let xa = Vector4(2, 1, 1, 1)
+        let xb = Vector4(3, 1, 1, 1)
+        let ya = Vector4(1, 2, 1, 1)
+        let yb = Vector4(1, 3, 1, 1)
+        let za = Vector4(1, 1, 2, 1)
+        let zb = Vector4(1, 1, 3, 1)
+        let wa = Vector4(1, 1, 1, 2)
+        let wb = Vector4(1, 1, 1, 3)
+        
+        XCTAssertNotEqual(xa.hashValue, xb.hashValue)
+        XCTAssertNotEqual(ya.hashValue, yb.hashValue)
+        XCTAssertNotEqual(za.hashValue, zb.hashValue)
+        XCTAssertNotEqual(wa.hashValue, wb.hashValue)
+        
+        XCTAssertNotEqual(xa.hashValue, ya.hashValue)
+        XCTAssertNotEqual(xb.hashValue, yb.hashValue)
+        XCTAssertNotEqual(xb.hashValue, zb.hashValue)
+        XCTAssertNotEqual(yb.hashValue, zb.hashValue)
+        XCTAssertNotEqual(xb.hashValue, wb.hashValue)
+        XCTAssertNotEqual(yb.hashValue, wb.hashValue)
+        
+        XCTAssertNotEqual(xa.hashValue, yb.hashValue)
+        XCTAssertNotEqual(ya.hashValue, xb.hashValue)
+        XCTAssertNotEqual(xa.hashValue, zb.hashValue)
+        XCTAssertNotEqual(xa.hashValue, wb.hashValue)
+    }
+    
     func testHermite() {
         let t1 = Vector4(1.40625, 1.40625, 1.40625, 1.40625)
         let t2 = Vector4(2.662375, 2.26537514, 2.662375, 2.26537514)
@@ -143,6 +186,7 @@ final class Vector4Tests: XCTestCase {
 
     static var allTests = [
         ("testHermite", testHermite),
+        ("testHash", testHash),
         ("testDot", testDot),
         ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),
