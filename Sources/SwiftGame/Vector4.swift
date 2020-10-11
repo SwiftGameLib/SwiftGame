@@ -260,6 +260,35 @@ public extension Vector4 {
     var floor: Vector4 {
         return Vector4(x.rounded(.down), y.rounded(.down), z.rounded(.down), w.rounded(.down))
     }
+    
+    /// Creates a new `Vector4` that contains a hermite spline interpolation.
+    /// - Parameters:
+    ///   - value1: The first position vector.
+    ///   - tangent1: The first tangent vector.
+    ///   - value2: The second position vector.
+    ///   - tangent2: The second tangent vector.
+    ///   - amount: Weighting factor.
+    /// - Returns: The hermite spline interpolated vector.
+    static func hermite(_ value1: Vector4, tangent1: Vector4, _ value2: Vector4, tangent2: Vector4, amount: Float) -> Vector4 {
+        return Vector4(
+            MathHelper.hermite(value1.x, tangent1: tangent1.x, value2.x, tangent2: tangent2.x, amount: amount),
+            MathHelper.hermite(value1.y, tangent1: tangent1.y, value2.y, tangent2: tangent2.y, amount: amount),
+            MathHelper.hermite(value1.z, tangent1: tangent1.z, value2.z, tangent2: tangent2.z, amount: amount),
+            MathHelper.hermite(value1.w, tangent1: tangent1.w, value2.w, tangent2: tangent2.w, amount: amount)
+        )
+    }
+    
+    /// Creates a new `Vector4` that contains a hermite spline interpolation.
+    /// - Parameters:
+    ///   - value1: The first position vector.
+    ///   - tangent1: The first tangent vector.
+    ///   - value2: The second position vector.
+    ///   - tangent2: The second tangent vector.
+    ///   - amount: Weighting factor.
+    ///   - result: The hermite spline interpolated vector as an `inout` value.
+    static func hermite(_ value1: Vector4, tangent1: Vector4, _ value2: Vector4, tangent2: Vector4, amount: Float, result: inout Vector4) {
+        result = hermite(value1, tangent1: tangent1, value2, tangent2: tangent2, amount: amount)
+    }
 }
 
 // MARK: - Operators

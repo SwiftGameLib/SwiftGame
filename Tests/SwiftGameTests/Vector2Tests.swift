@@ -116,8 +116,29 @@ final class Vector2Tests: XCTestCase {
         Vector2.dot(vector1, vector2, result: &result)
         XCTAssertEqual(expectedResult, result)
     }
+    
+    func testHermite() {
+        let t1 = Vector2(1.40625, 1.40625)
+        let t2 = Vector2(2.662375, 2.26537514)
+        
+        let v1 = Vector2(1, 1), v2 = Vector2(2, 2), v3 = Vector2(3, 3), v4 = Vector2(4, 4)
+        let v5 = Vector2(4, 3), v6 = Vector2(2, 1), v7 = Vector2(1, 2), v8 = Vector2(3, 4)
+        
+        XCTAssertEqual(t1, Vector2.hermite(v1, tangent1: v2, v3, tangent2: v4, amount: 0.25))
+        XCTAssertEqual(t2, Vector2.hermite(v5, tangent1: v6, v7, tangent2: v8, amount: 0.45))
+        
+        var result1 = Vector2(0)
+        var result2 = Vector2(0)
+        
+        Vector2.hermite(v1, tangent1: v2, v3, tangent2: v4, amount: 0.25, result: &result1)
+        Vector2.hermite(v5, tangent1: v6, v7, tangent2: v8, amount: 0.45, result: &result2)
+        
+        XCTAssertEqual(t1, result1)
+        XCTAssertEqual(t2, result2)
+    }
 
     static var allTests = [
+        ("testHermite", testHermite),
         ("testDot", testDot),
         ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),

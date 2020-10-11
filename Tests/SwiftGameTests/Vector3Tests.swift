@@ -129,7 +129,28 @@ final class Vector3Tests: XCTestCase {
         XCTAssertEqual(expectedResult, result)
     }
 
+    func testHermite() {
+        let t1 = Vector3(1.40625, 1.40625, 1.40625)
+        let t2 = Vector3(2.662375, 2.26537514, 2.662375)
+        
+        let v1 = Vector3(1, 1, 1), v2 = Vector3(2, 2, 2), v3 = Vector3(3, 3, 3), v4 = Vector3(4, 4, 4)
+        let v5 = Vector3(4, 3, 4), v6 = Vector3(2, 1, 2), v7 = Vector3(1, 2, 1), v8 = Vector3(3, 4, 3)
+        
+        XCTAssertEqual(t1, Vector3.hermite(v1, tangent1: v2, v3, tangent2: v4, amount: 0.25))
+        XCTAssertEqual(t2, Vector3.hermite(v5, tangent1: v6, v7, tangent2: v8, amount: 0.45))
+        
+        var result1 = Vector3(0)
+        var result2 = Vector3(0)
+        
+        Vector3.hermite(v1, tangent1: v2, v3, tangent2: v4, amount: 0.25, result: &result1)
+        Vector3.hermite(v5, tangent1: v6, v7, tangent2: v8, amount: 0.45, result: &result2)
+        
+        XCTAssertEqual(t1, result1)
+        XCTAssertEqual(t2, result2)
+    }
+
     static var allTests = [
+        ("testHermite", testHermite),
         ("testDot", testDot),
         ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),
