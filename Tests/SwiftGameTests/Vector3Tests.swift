@@ -129,6 +129,41 @@ final class Vector3Tests: XCTestCase {
         XCTAssertEqual(expectedResult, result)
     }
 
+    func testHash() {
+        // Check for overflows
+        let max = Vector3(Float.greatestFiniteMagnitude, Float.greatestFiniteMagnitude, Float.greatestFiniteMagnitude)
+        let min = Vector3(Float.leastNormalMagnitude, Float.leastNormalMagnitude, Float.leastNormalMagnitude)
+        
+        XCTAssertNotEqual(max.hashValue, Vector3.zero.hashValue)
+        XCTAssertNotEqual(min.hashValue, Vector3.zero.hashValue)
+        
+        // Common values
+        let a = Vector3(0)
+        XCTAssertEqual(a.hashValue, Vector3.zero.hashValue)
+        XCTAssertNotEqual(a.hashValue, Vector3.one.hashValue)
+        
+        // Individual properties
+        let xa = Vector3(2, 1, 1)
+        let xb = Vector3(3, 1, 1)
+        let ya = Vector3(1, 2, 1)
+        let yb = Vector3(1, 3, 1)
+        let za = Vector3(1, 1, 2)
+        let zb = Vector3(1, 1, 3)
+        
+        XCTAssertNotEqual(xa.hashValue, xb.hashValue)
+        XCTAssertNotEqual(ya.hashValue, yb.hashValue)
+        XCTAssertNotEqual(za.hashValue, zb.hashValue)
+        
+        XCTAssertNotEqual(xa.hashValue, ya.hashValue)
+        XCTAssertNotEqual(xb.hashValue, yb.hashValue)
+        XCTAssertNotEqual(xb.hashValue, zb.hashValue)
+        XCTAssertNotEqual(yb.hashValue, zb.hashValue)
+        
+        XCTAssertNotEqual(xa.hashValue, yb.hashValue)
+        XCTAssertNotEqual(ya.hashValue, xb.hashValue)
+        XCTAssertNotEqual(xa.hashValue, zb.hashValue)
+    }
+    
     func testHermite() {
         let t1 = Vector3(1.40625, 1.40625, 1.40625)
         let t2 = Vector3(2.662375, 2.26537514, 2.662375)
@@ -151,6 +186,7 @@ final class Vector3Tests: XCTestCase {
 
     static var allTests = [
         ("testHermite", testHermite),
+        ("testHash", testHash),
         ("testDot", testDot),
         ("testDistanceSquared", testDistanceSquared),
         ("testInitializers", testInitializers),
