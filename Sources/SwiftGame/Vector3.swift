@@ -9,7 +9,7 @@ import Foundation
 
 /// Describes a 3D vector
 
-public struct Vector3: Equatable, Codable, CustomDebugStringConvertible {
+public struct Vector3: Equatable, Codable, CustomDebugStringConvertible, Hashable {
     // MARK: - Static properties
     /// Returns a `Vector3` with components `0, 0, 0`.
     public static let zero: Vector3 = Vector3(0, 0, 0)
