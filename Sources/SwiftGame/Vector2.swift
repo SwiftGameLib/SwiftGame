@@ -9,7 +9,7 @@ import Foundation
 
 /// Describes a 2D vector
 
-public struct Vector2: Equatable, Codable, CustomDebugStringConvertible {
+public struct Vector2: Equatable, Codable, CustomDebugStringConvertible, Hashable {
     // MARK: - Static properties
 
     /// Returns a `Vector2` with components `0, 0`.

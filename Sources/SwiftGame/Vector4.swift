@@ -9,7 +9,7 @@ import Foundation
 
 /// Describes a 4D vector
 
-public struct Vector4: Equatable, Codable, CustomDebugStringConvertible {
+public struct Vector4: Equatable, Codable, CustomDebugStringConvertible, Hashable {
     // MARK: - Static properties
     /// Returns a `Vector4` with components `0, 0, 0, 0`.
     public static let zero: Vector4 = Vector4(0, 0, 0, 0)
