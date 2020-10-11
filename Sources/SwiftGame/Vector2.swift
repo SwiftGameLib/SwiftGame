@@ -202,6 +202,33 @@ public extension Vector2 {
     var floor: Vector2 {
         return Vector2(x.rounded(.down), y.rounded(.down))
     }
+    
+    /// Creates a new `Vector2` that contains a hermite spline interpolation.
+    /// - Parameters:
+    ///   - value1: The first position vector.
+    ///   - tangent1: The first tangent vector.
+    ///   - value2: The second position vector.
+    ///   - tangent2: The second tangent vector.
+    ///   - amount: Weighting factor.
+    /// - Returns: The hermite spline interpolated vector.
+    static func hermite(_ value1: Vector2, tangent1: Vector2, _ value2: Vector2, tangent2: Vector2, amount: Float) -> Vector2 {
+        return Vector2(
+            MathHelper.hermite(value1.x, tangent1: tangent1.x, value2.x, tangent2: tangent2.x, amount: amount),
+            MathHelper.hermite(value1.y, tangent1: tangent1.y, value2.y, tangent2: tangent2.y, amount: amount)
+        )
+    }
+    
+    /// Creates a new `Vector2` that contains a hermite spline interpolation.
+    /// - Parameters:
+    ///   - value1: The first position vector.
+    ///   - tangent1: The first tangent vector.
+    ///   - value2: The second position vector.
+    ///   - tangent2: The second tangent vector.
+    ///   - amount: Weighting factor.
+    ///   - result: The hermite spline interpolated vector as an `inout` value.
+    static func hermite(_ value1: Vector2, tangent1: Vector2, _ value2: Vector2, tangent2: Vector2, amount: Float, result: inout Vector2) {
+        result = hermite(value1, tangent1: tangent1, value2, tangent2: tangent2, amount: amount)
+    }
 }
 
 // MARK: - Operators
