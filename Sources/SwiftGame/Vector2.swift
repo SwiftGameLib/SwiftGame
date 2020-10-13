@@ -229,6 +229,11 @@ public extension Vector2 {
     static func hermite(_ value1: Vector2, tangent1: Vector2, _ value2: Vector2, tangent2: Vector2, amount: Float, result: inout Vector2) {
         result = hermite(value1, tangent1: tangent1, value2, tangent2: tangent2, amount: amount)
     }
+
+    /// The length of this vector.
+    var length: Float {
+        return Float(((x * x) + (y * y)).squareRoot())
+    }
 }
 
 // MARK: - Operators

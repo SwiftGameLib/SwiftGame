@@ -184,7 +184,13 @@ final class Vector3Tests: XCTestCase {
         XCTAssertEqual(t2, result2)
     }
 
+    func testLength() {
+        let vector1 = Vector3(1, 2, 3)
+        XCTAssertEqual(vector1.length, 3.7416575)
+    }
+
     static var allTests = [
+        ("testLength", testLength),
         ("testHermite", testHermite),
         ("testHash", testHash),
         ("testDot", testDot),
