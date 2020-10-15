@@ -170,7 +170,13 @@ final class Vector2Tests: XCTestCase {
         XCTAssertEqual(vector1.length, 5)
     }
 
+    func testLengthSquared() {
+        let vector1 = Vector2(1, 2)
+        XCTAssertEqual(vector1.lengthSquared, 5)
+    }
+
     static var allTests = [
+        ("testLengthSquared", testLengthSquared),
         ("testLength", testLength),
         ("testHermite", testHermite),
         ("testHash", testHash),

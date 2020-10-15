@@ -234,6 +234,11 @@ public extension Vector2 {
     var length: Float {
         return Float(((x * x) + (y * y)).squareRoot())
     }
+    
+    /// The squared length of this vector.
+    var lengthSquared: Float {
+        return Float(((x * x) + (y * y)))
+    }
 }
 
 // MARK: - Operators
