@@ -353,6 +353,58 @@ public extension Vector4 {
         result.z = MathHelper.lerpPrecise(value1.z, value2.z, amount: amount)
         result.w = MathHelper.lerpPrecise(value1.w, value2.w, amount: amount)
     }
+    
+    /// Returns a vector that contains the maximal component values from two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    /// - Returns: A Vector containing the maximal components from each source vector.
+    static func max(_ value1: Vector4, _ value2: Vector4) -> Vector4 {
+        return Vector4(
+            Swift.max(value1.x, value2.x),
+            Swift.max(value1.y, value2.y),
+            Swift.max(value1.z, value2.z),
+            Swift.max(value1.w, value2.w)
+        )
+    }
+    
+    /// Returns a vector that contains the maximal component values from two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - result: A Vector containing the maximal components from each source vector as an `inout` parameter.
+    static func max(_ value1: Vector4, _ value2: Vector4, result: inout Vector4) {
+        result.x = Swift.max(value1.x, value2.x)
+        result.y = Swift.max(value1.y, value2.y)
+        result.z = Swift.max(value1.z, value2.z)
+        result.w = Swift.max(value1.w, value2.w)
+    }
+    
+    /// Returns a vector that contains the minimal component values from two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    /// - Returns: A Vector containing the minimal components from each source vector.
+    static func min(_ value1: Vector4, _ value2: Vector4) -> Vector4 {
+        return Vector4(
+            Swift.min(value1.x, value2.x),
+            Swift.min(value1.y, value2.y),
+            Swift.min(value1.z, value2.z),
+            Swift.min(value1.w, value2.w)
+        )
+    }
+    
+    /// Returns a vector that contains the minimal component values from two vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - result: A Vector containing the minimal components from each source vector as an `inout` parameter.
+    static func min(_ value1: Vector4, _ value2: Vector4, result: inout Vector4) {
+        result.x = Swift.min(value1.x, value2.x)
+        result.y = Swift.min(value1.y, value2.y)
+        result.z = Swift.min(value1.z, value2.z)
+        result.w = Swift.min(value1.w, value2.w)
+    }
 }
 
 // MARK: - Operators

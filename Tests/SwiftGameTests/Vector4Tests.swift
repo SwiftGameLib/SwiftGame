@@ -215,8 +215,35 @@ final class Vector4Tests: XCTestCase {
         
         XCTAssertEqual(Vector4.lerpPrecise(vector3, vector1, amount: 1.0), Vector4(1.0, 2, 3, 4))
     }
+    
+    func testMinMax() {
+        XCTAssertEqual(
+            Vector4.max(
+                Vector4(1, 2, 3, 4),
+                Vector4(4, 3, 2, 1)),
+            Vector4(4, 3, 3, 4))
+        
+        XCTAssertEqual(
+            Vector4.max(
+                Vector4(-1, -2, -3, -4),
+                Vector4(-4, -3, -2, -1)),
+            Vector4(-1, -2, -2, -1))
+        
+        XCTAssertEqual(
+            Vector4.min(
+                Vector4(1, 2, 3, 4),
+                Vector4(4, 3, 2, 1)),
+            Vector4(1, 2, 2, 1))
+        
+        XCTAssertEqual(
+            Vector4.min(
+                Vector4(-1, -2, -3, -4),
+                Vector4(-4, -3, -2, -1)),
+            Vector4(-4, -3, -3, -4))
+    }
 
     static var allTests = [
+        ("testMinMax", testMinMax),
         ("testPreciseLerp", testPreciseLerp),
         ("testLerp", testLerp),
         ("testLengthSquared", testLengthSquared),
