@@ -304,6 +304,11 @@ public extension Vector3 {
     var length: Float {
         return Float(((x * x) + (y * y) + (z * z)).squareRoot())
     }
+    
+    /// The squared length of this vector.
+    var lengthSquared: Float {
+        return Float(((x * x) + (y * y) + (z * z)))
+    }
 }
 
 // MARK: - Operators
