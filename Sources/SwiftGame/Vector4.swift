@@ -299,6 +299,60 @@ public extension Vector4 {
     var lengthSquared: Float {
         return Float(((x * x) + (y * y) + (z * z) + (w * w)))
     }
+    
+    /// Creates a vector that contains the linear interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - amount: Weighting value (between 0.0 and 1.0).
+    /// - Returns: The result of the linear interpolation of the specified vectors.
+    static func lerp(_ value1: Vector4, _ value2: Vector4, amount: Float) -> Vector4 {
+        return Vector4(MathHelper.lerp(value1.x, value2.x, amount: amount),
+                       MathHelper.lerp(value1.y, value2.y, amount: amount),
+                       MathHelper.lerp(value1.z, value2.z, amount: amount),
+                       MathHelper.lerp(value1.w, value2.w, amount: amount))
+    }
+    
+    /// Creates a vector that contains the linear interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - amount: Weighting value (between 0.0 and 1.0).
+    ///   - result: The result of the linear interpolation of the specified vectors as an `inout` parameter.
+    static func lerp(_ value1: Vector4, _ value2: Vector4, amount: Float, result: inout Vector4) {
+        result.x = MathHelper.lerp(value1.x, value2.x, amount: amount)
+        result.y = MathHelper.lerp(value1.y, value2.y, amount: amount)
+        result.z = MathHelper.lerp(value1.z, value2.z, amount: amount)
+        result.w = MathHelper.lerp(value1.w, value2.w, amount: amount)
+    }
+    
+    /// Creates a vector that contains the linear interpolation of the specified vectors.
+    /// Uses `MathHelper.lerpPrecise` for the interpolation for less efficient but more accurate results.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - amount: Weighting value (between 0.0 and 1.0).
+    /// - Returns: The result of the linear interpolation of the specified vectors.
+    static func lerpPrecise(_ value1: Vector4, _ value2: Vector4, amount: Float) -> Vector4 {
+        return Vector4(MathHelper.lerpPrecise(value1.x, value2.x, amount: amount),
+                       MathHelper.lerpPrecise(value1.y, value2.y, amount: amount),
+                       MathHelper.lerpPrecise(value1.z, value2.z, amount: amount),
+                       MathHelper.lerpPrecise(value1.w, value2.w, amount: amount))
+    }
+    
+    /// Creates a vector that contains the linear interpolation of the specified vectors.
+    /// Uses `MathHelper.lerpPrecise` for the interpolation for less efficient but more accurate results.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - amount: Weighting value (between 0.0 and 1.0).
+    ///   - result: The result of the linear interpolation of the specified vectors as an `inout` parameter.
+    static func lerpPrecise(_ value1: Vector4, _ value2: Vector4, amount: Float, result: inout Vector4) {
+        result.x = MathHelper.lerpPrecise(value1.x, value2.x, amount: amount)
+        result.y = MathHelper.lerpPrecise(value1.y, value2.y, amount: amount)
+        result.z = MathHelper.lerpPrecise(value1.z, value2.z, amount: amount)
+        result.w = MathHelper.lerpPrecise(value1.w, value2.w, amount: amount)
+    }
 }
 
 // MARK: - Operators

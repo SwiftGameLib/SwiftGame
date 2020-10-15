@@ -193,8 +193,32 @@ final class Vector4Tests: XCTestCase {
         let vector1 = Vector4(1, 2, 3, 4)
         XCTAssertEqual(vector1.lengthSquared, 30)
     }
+    
+    func testLerp() {
+        let vector1 = Vector4(1, 2, 3, 4)
+        let vector2 = Vector4(4, 3, 2, 1)
+        
+        XCTAssertEqual(Vector4.lerp(vector1, vector2, amount: 0.5), Vector4(2.5, 2.5, 2.5, 2.5))
+        
+        let vector3 = Vector4(1.0e20, 2, 3, 4)
+        
+        XCTAssertEqual(Vector4.lerp(vector3, vector1, amount: 1.0), Vector4(0.0, 2, 3, 4))
+    }
+    
+    func testPreciseLerp() {
+        let vector1 = Vector4(1, 2, 3, 4)
+        let vector2 = Vector4(4, 3, 2, 1)
+        
+        XCTAssertEqual(Vector4.lerpPrecise(vector1, vector2, amount: 0.5), Vector4(2.5, 2.5, 2.5, 2.5))
+        
+        let vector3 = Vector4(1.0e20, 2, 3, 4)
+        
+        XCTAssertEqual(Vector4.lerpPrecise(vector3, vector1, amount: 1.0), Vector4(1.0, 2, 3, 4))
+    }
 
     static var allTests = [
+        ("testPreciseLerp", testPreciseLerp),
+        ("testLerp", testLerp),
         ("testLengthSquared", testLengthSquared),
         ("testLength", testLength),
         ("testHermite", testHermite),
