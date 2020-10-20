@@ -411,6 +411,11 @@ public extension Vector4 {
         let factor: Float = 1.0 / self.length
         return Vector4(x * factor, y * factor, z * factor, w * factor)
     }
+    
+    /// Returns a vector containing the members of this vector rounded to the nearest integer.
+    var rounded: Vector4 {
+        return Vector4(x.rounded(), y.rounded(), z.rounded(), w.rounded())
+    }
 }
 
 // MARK: - Operators

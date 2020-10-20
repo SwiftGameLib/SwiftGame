@@ -79,6 +79,10 @@ final class Vector4Tests: XCTestCase {
         // Test negative rounding
         vector = Vector4(-3.499)
         XCTAssertEqual(vector.floor, Vector4(-4.0))
+        
+        // MARK: Rounded
+        vector = Vector4(1.499, 2.5, 3.501, 4.777)
+        XCTAssertEqual(vector.rounded, Vector4(1.0, 3.0, 4.0, 5.0))
     }
 
     func testDebugStrings() {
