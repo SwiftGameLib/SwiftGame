@@ -405,6 +405,12 @@ public extension Vector4 {
         result.z = Swift.min(value1.z, value2.z)
         result.w = Swift.min(value1.w, value2.w)
     }
+    
+    /// Returns a vector containing the normalized vector for a vector.
+    var normalized: Vector4 {
+        let factor: Float = 1.0 / self.length
+        return Vector4(x * factor, y * factor, z * factor, w * factor)
+    }
 }
 
 // MARK: - Operators

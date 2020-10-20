@@ -241,8 +241,17 @@ final class Vector4Tests: XCTestCase {
                 Vector4(-4, -3, -2, -1)),
             Vector4(-4, -3, -3, -4))
     }
+    
+    func testNormalize() {
+        let vector1 = Vector4(1, 2, 3, 4)
+        XCTAssertEqual(vector1.normalized.x, 0.18257418)
+        XCTAssertEqual(vector1.normalized.y, 0.36514837)
+        XCTAssertEqual(vector1.normalized.z, 0.5477226)
+        XCTAssertEqual(vector1.normalized.w, 0.73029673)
+    }
 
     static var allTests = [
+        ("testNormalize", testNormalize),
         ("testMinMax", testMinMax),
         ("testPreciseLerp", testPreciseLerp),
         ("testLerp", testLerp),
