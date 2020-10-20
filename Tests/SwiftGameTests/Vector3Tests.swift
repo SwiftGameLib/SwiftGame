@@ -265,7 +265,15 @@ final class Vector3Tests: XCTestCase {
                        Vector3(3.352, 2.784, 2.216))
     }
 
+    func testReflect() {
+        let vector = Vector3(-1, -2, -3)
+        let normal = Vector3(0, 1, 0)
+        
+        XCTAssertEqual(vector.reflect(by: normal), Vector3(-1, 2, -3))
+    }
+
     static var allTests = [
+        ("testReflect", testReflect),
         ("testSmoothStep", testSmoothStep),
         ("testNormalize", testNormalize),
         ("testMinMax", testMinMax),

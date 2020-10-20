@@ -336,6 +336,17 @@ public extension Vector2 {
         return Vector2(x * factor, y * factor)
     }
     
+    /// Creates a new vector that contains the reflected vector of this vector and the provided normal.
+    /// - Parameter normal: Reflection normal.
+    /// - Returns: Reflected vector.
+    func reflect(by normal: Vector2) -> Vector2 {
+        let dotProduct = (x * normal.x) + (y * normal.y)
+        let reflectedX = x - (2.0 * normal.x) * dotProduct
+        let reflectedY = y - (2.0 * normal.y) * dotProduct
+        
+        return Vector2(reflectedX, reflectedY)
+    }
+    
     /// Returns a vector containing the members of this vector rounded to the nearest integer.
     var rounded: Vector2 {
         return Vector2(x.rounded(), y.rounded())

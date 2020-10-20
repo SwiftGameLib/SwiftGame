@@ -244,8 +244,16 @@ final class Vector2Tests: XCTestCase {
         XCTAssertEqual(Vector2.smoothStep(vector1, vector2, amount: 0.70),
                        Vector2(3.352, 2.784))
     }
+    
+    func testReflect() {
+        let vector = Vector2(-1, -2)
+        let normal = Vector2(0, 1)
+        
+        XCTAssertEqual(vector.reflect(by: normal), Vector2(-1, 2))
+    }
 
     static var allTests = [
+        ("testReflect", testReflect),
         ("testSmoothStep", testSmoothStep),
         ("testNormalize", testNormalize),
         ("testMinMax", testMinMax),
