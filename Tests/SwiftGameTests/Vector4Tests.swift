@@ -253,8 +253,21 @@ final class Vector4Tests: XCTestCase {
         XCTAssertEqual(vector1.normalized.z, 0.5477226)
         XCTAssertEqual(vector1.normalized.w, 0.73029673)
     }
+    
+    func testSmoothStep() {
+        let vector1 = Vector4(1, 2, 3, 4)
+        let vector2 = Vector4(4, 3, 2, 1)
+        
+        XCTAssertEqual(Vector4.smoothStep(vector1, vector2, amount: 0.25),
+                       Vector4(1.46875, 2.15625, 2.84375, 3.53125))
+        XCTAssertEqual(Vector4.smoothStep(vector1, vector2, amount: 0.50),
+                       Vector4(2.5, 2.5, 2.5, 2.5))
+        XCTAssertEqual(Vector4.smoothStep(vector1, vector2, amount: 0.70),
+                       Vector4(3.352, 2.784, 2.216, 1.648))
+    }
 
     static var allTests = [
+        ("testSmoothStep", testSmoothStep),
         ("testNormalize", testNormalize),
         ("testMinMax", testMinMax),
         ("testPreciseLerp", testPreciseLerp),

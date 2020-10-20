@@ -418,6 +418,30 @@ public extension Vector3 {
     var rounded: Vector3 {
         return Vector3(x.rounded(), y.rounded(), z.rounded())
     }
+    
+    /// Creates a vector that contains the cubic interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - amount: Weighting value (between 0.0 and 1.0).
+    /// - Returns: The result of the cubic interpolation of the specified vectors.
+    static func smoothStep(_ value1: Vector3, _ value2: Vector3, amount: Float) -> Vector3 {
+        return Vector3(MathHelper.smoothStep(value1.x, value2.x, amount: amount),
+                       MathHelper.smoothStep(value1.y, value2.y, amount: amount),
+                       MathHelper.smoothStep(value1.z, value2.z, amount: amount))
+    }
+    
+    /// Creates a vector that contains the cubic interpolation of the specified vectors.
+    /// - Parameters:
+    ///   - value1: The first vector.
+    ///   - value2: The second vector.
+    ///   - amount: Weighting value (between 0.0 and 1.0).
+    ///   - result: The result of the cubic interpolation of the specified vectors as an `inout` parameter.
+    static func smoothStep(_ value1: Vector3, _ value2: Vector3, amount: Float, result: inout Vector3) {
+        result.x = MathHelper.smoothStep(value1.x, value2.x, amount: amount)
+        result.y = MathHelper.smoothStep(value1.y, value2.y, amount: amount)
+        result.z = MathHelper.smoothStep(value1.z, value2.z, amount: amount)
+    }
 }
 
 // MARK: - Operators
