@@ -8,9 +8,22 @@
 // TODO: Implement
 open class Game {
     // MARK: iVars
+    // private var _components: GameComponentCollection? = nil
+    // private var _services: GameServicecontainer? = nil
     private var _content: ContentManager? = nil
-
     internal var platform: GamePlatform? = nil
+    
+//    private var _drawables: SortingFilteringCollection<DrawableProtocol> = ...
+    
+//    private var _updateables: SortingFilteringCollection<UpdateableProtocol> = ...
+    
+    private var _graphicsDeviceManager: GraphicsDeviceManagerProtocol? = nil
+    private var _graphicsDeviceService: GraphicsDeviceServiceProtocol? = nil
+    
+    private var _initalized: Bool = false
+    private var _isFixedTimeStep: Bool = true
+    
+    private var _targetElapsedTime: TimeSpan = TimeSpan(withTicks: 166667) // 60 fps
 
     // MARK: Construction/Destruction
     public required init() {
