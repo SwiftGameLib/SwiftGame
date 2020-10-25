@@ -60,12 +60,12 @@ class GamePlatform {
     }
 
     // MARK: Events
-    public static var asyncRunLoopEndedNotification: NSNotification.Name =
-        NSNotification.Name(rawValue: "GamePlatform.AsyncRunLoopEndedNotification")
-    public static var activatedNotification: NSNotification.Name =
-        NSNotification.Name(rawValue:"GamePlatform.ActivatedNotification")
-    public static var deactivatedNotification: NSNotification.Name =
-        NSNotification.Name(rawValue:"GamePlatform.DeactivatedNotification")
+    public static var asyncRunLoopEndedNotification: Notification.Name =
+        Notification.Name(rawValue: "GamePlatform.AsyncRunLoopEndedNotification")
+    public static var activatedNotification: Notification.Name =
+        Notification.Name(rawValue:"GamePlatform.ActivatedNotification")
+    public static var deactivatedNotification: Notification.Name =
+        Notification.Name(rawValue:"GamePlatform.DeactivatedNotification")
 
     /// Posts the `asyncRunLoopEnded` notification. This method must be called by derived classes when the asynchronous run loop they start has stopped running.
     internal func postAsyncRunLoopEnded() {
